@@ -1,4 +1,4 @@
-package com.anoir.noteanoir.ui.theme
+package com.anoir.noteanoir.presentation.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
