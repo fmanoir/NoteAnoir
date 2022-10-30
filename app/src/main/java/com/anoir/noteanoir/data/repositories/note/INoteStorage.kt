@@ -8,5 +8,5 @@ Note Storage interface
 
 interface INoteStorage {
     suspend fun getAllNote(): List<NoteEntity>
-    suspend fun insertNote(note: NoteEntity)
+    suspend fun addNote(note: NoteEntity)
 }

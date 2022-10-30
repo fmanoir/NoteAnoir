@@ -1,9 +1,9 @@
-package com.anoir.noteanoir.core.di
+package com.anoir.noteanoir.data.di
 
 import android.app.Application
 import androidx.room.Room
 import com.anoir.noteanoir.BuildConfig
-import com.anoir.noteanoir.core.common.DATABASE_NAME
+import com.anoir.noteanoir.data.common.DATABASE_NAME
 import com.anoir.noteanoir.data.repositories.note.INoteStorage
 import com.anoir.noteanoir.data.source.local.dao.NoteDao
 import com.anoir.noteanoir.data.source.local.database.NoteDatabase
@@ -22,6 +22,7 @@ DI => DataBase/Storage/DAO
 @InstallIn(SingletonComponent::class)
 class DatabaseModule {
 
+    // DataBase
     @Provides
     @Singleton
     fun providesDatabase(app: Application): NoteDatabase =
@@ -30,6 +31,7 @@ class DatabaseModule {
                 if (BuildConfig.DEBUG) fallbackToDestructiveMigration()
             }.build()
 
+    // Storage
     @Provides
     @Singleton
     fun providesNoteStorage(
@@ -37,8 +39,7 @@ class DatabaseModule {
     ): INoteStorage =
         NoteStorage(noteDao = noteDao)
 
-
-
+    // Dao
     @Provides
     @Singleton
     fun providesNoteDao(database: NoteDatabase): NoteDao {

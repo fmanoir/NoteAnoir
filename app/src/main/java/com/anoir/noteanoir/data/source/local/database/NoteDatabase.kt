@@ -2,7 +2,7 @@ package com.anoir.noteanoir.data.source.local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.anoir.noteanoir.core.common.DATABASE_VERSION
+import com.anoir.noteanoir.data.common.DATABASE_VERSION
 import com.anoir.noteanoir.data.source.local.dao.NoteDao
 import com.anoir.noteanoir.data.source.local.entity.NoteEntity
 

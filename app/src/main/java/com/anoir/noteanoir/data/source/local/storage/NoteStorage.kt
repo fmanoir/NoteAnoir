@@ -17,7 +17,7 @@ class NoteStorage @Inject constructor(
         return noteDao.getAllNote()
     }
 
-    override suspend fun insertNote(note: NoteEntity) {
-        noteDao.insertNote(note)
+    override suspend fun addNote(note: NoteEntity) {
+        noteDao.addNote(note)
     }
 }
