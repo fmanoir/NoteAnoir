@@ -1,6 +1,6 @@
 package com.anoir.noteanoir.data.source.mappers
 
-import com.anoir.noteanoir.data.source.build.NoteBuilder
+import com.anoir.noteanoir.data.source.builder.NoteBuilder
 import junitparams.JUnitParamsRunner
 import org.junit.Assert
 import org.junit.Test

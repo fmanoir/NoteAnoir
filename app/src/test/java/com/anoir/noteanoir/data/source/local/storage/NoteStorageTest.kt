@@ -1,10 +1,9 @@
 package com.anoir.noteanoir.data.source.local.storage
 
-import androidx.annotation.CallSuper
 import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry
 import com.anoir.noteanoir.data.repositories.note.INoteStorage
-import com.anoir.noteanoir.data.source.build.NoteBuilder
+import com.anoir.noteanoir.data.source.builder.NoteBuilder
 import com.anoir.noteanoir.data.source.local.dao.NoteDao
 import com.anoir.noteanoir.data.source.local.database.NoteDatabase
 import com.anoir.noteanoir.domain.model.NoteDomain

@@ -1,6 +1,6 @@
 package com.anoir.noteanoir.data.source.remote.service
 
-import com.anoir.noteanoir.data.source.build.NoteBuilder.Companion.BUILD_NOTE_DTO
+import com.anoir.noteanoir.data.source.builder.NoteBuilder.Companion.BUILD_NOTE_DTO
 import com.anoir.noteanoir.data.source.remote.api.NoteAPI
 import com.anoir.noteanoir.data.source.remote.common.error.ApiErrorHandler
 import com.anoir.noteanoir.data.source.remote.common.network.InternetStatusInterface
