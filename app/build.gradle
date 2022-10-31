@@ -91,6 +91,10 @@ dependencies {
     implementation "androidx.compose.foundation:foundation-layout:$versions.compose_ui"
     implementation "com.google.android.material:compose-theme-adapter:$versions.compose_ui"
 
+    //Navigation Compose
+    implementation "androidx.navigation:navigation-compose:$versions.navigation_compose_version"
+    implementation "androidx.hilt:hilt-navigation-compose:$versions.hilt_navigation_compose_version"
+
     // Room
     implementation "androidx.room:room-runtime:$versions.room_version"
     kapt "androidx.room:room-compiler:$versions.room_version"

@@ -1,4 +1,4 @@
-package com.anoir.noteanoir.presentation.ui.theme
+package com.anoir.noteanoir.presentation.common.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
@@ -7,14 +7,14 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 
 private val DarkColorPalette = darkColors(
-    primary = Purple200,
-    primaryVariant = Purple700,
+    primary = green_200,
+    primaryVariant = green_500,
     secondary = Teal200
 )
 
 private val LightColorPalette = lightColors(
-    primary = Purple500,
-    primaryVariant = Purple700,
+    primary = green_200,
+    primaryVariant = green_500,
     secondary = Teal200
 
     /* Other default colors to override

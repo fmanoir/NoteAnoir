@@ -11,7 +11,7 @@ class ToDataTest {
 
     @Test
     fun `should map NoteDomain to NoteEntity`() {
-        val result = NoteBuilder.BUILD_NOTE_DOMAIN.toData()
+        val result = NoteBuilder.BUILD_NOTE_MODEL.toData()
         Assert.assertEquals(
             NoteBuilder.BUILD_NOTE_ENTITY, result
         )

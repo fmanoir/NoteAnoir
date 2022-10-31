@@ -1,6 +1,6 @@
 package com.anoir.noteanoir.data.source.mappers
 
-import com.anoir.noteanoir.data.source.builder.NoteBuilder.Companion.BUILD_NOTE_DOMAIN
+import com.anoir.noteanoir.data.source.builder.NoteBuilder.Companion.BUILD_NOTE_MODEL
 import com.anoir.noteanoir.data.source.builder.NoteBuilder.Companion.BUILD_NOTE_ENTITY
 import junitparams.JUnitParamsRunner
 import org.junit.Assert.assertEquals
@@ -12,10 +12,10 @@ import org.junit.runner.RunWith
 class ToDomainTest {
 
     @Test
-    fun `should map NoteEntity to NoteDomain`() {
-        val result = BUILD_NOTE_ENTITY.toDomain()
+    fun `should map NoteEntity to NoteModel`() {
+        val result = BUILD_NOTE_ENTITY.toModel()
         assertEquals(
-            BUILD_NOTE_DOMAIN, result
+            BUILD_NOTE_MODEL, result
         )
     }
 

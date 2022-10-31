@@ -6,7 +6,7 @@ import com.anoir.noteanoir.data.repositories.note.INoteStorage
 import com.anoir.noteanoir.data.source.builder.NoteBuilder
 import com.anoir.noteanoir.data.source.local.dao.NoteDao
 import com.anoir.noteanoir.data.source.local.database.NoteDatabase
-import com.anoir.noteanoir.domain.model.NoteDomain
+import com.anoir.noteanoir.domain.model.NoteModel
 import dagger.hilt.android.testing.HiltAndroidTest
 import io.mockk.MockKAnnotations
 import io.mockk.impl.annotations.MockK
@@ -58,7 +58,7 @@ class NoteStorageTest {
     @Test
     fun shouldReturnEmptyList_WhenNoNote() {
         runBlocking {
-            assertEquals(emptyList<NoteDomain>(), noteStorage.getAllNote())
+            assertEquals(emptyList<NoteModel>(), noteStorage.getAllNote())
         }
     }
 

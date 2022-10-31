@@ -39,7 +39,9 @@ buildscript {
     versions.androidx_junit_version = '1.1.3'
     versions.junitparam_version = '1.1.1'
     versions.coroutines_test_version = "1.5.1"
-
+    // Navigation
+    versions.hilt_navigation_compose_version = '1.0.0'
+    versions.navigation_compose_version = '2.5.3'
 
     versions.androidx_core_testing_version = '2.1.0'
     versions.androidx_test_runner_version = '1.4.0'

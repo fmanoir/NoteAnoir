@@ -2,7 +2,7 @@ package com.anoir.noteanoir.data.source.builder
 
 import com.anoir.noteanoir.data.source.local.entity.NoteEntity
 import com.anoir.noteanoir.data.source.remote.dto.NoteDto
-import com.anoir.noteanoir.domain.model.NoteDomain
+import com.anoir.noteanoir.domain.model.NoteModel
 
 class NoteBuilder {
 
@@ -18,7 +18,7 @@ class NoteBuilder {
             id = PARAMETER_NOTE_ID,
             title = PARAMETER_NOTE_TITLE
         )
-        val BUILD_NOTE_DOMAIN = NoteDomain(
+        val BUILD_NOTE_MODEL = NoteModel(
             id = PARAMETER_NOTE_ID,
             title = PARAMETER_NOTE_TITLE
         )
