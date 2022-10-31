@@ -1,5 +1,6 @@
 package com.anoir.noteanoir.data.di
 
+import com.anoir.noteanoir.data.repositories.note.INoteService
 import com.anoir.noteanoir.data.repositories.note.INoteStorage
 import com.anoir.noteanoir.data.repositories.note.NoteRepository
 import com.anoir.noteanoir.domain.repository.INoteRepository
@@ -22,9 +23,10 @@ class RepositoryModule {
     @Provides
     @Singleton
     fun provideNoteRepository (
-        noteStorage: INoteStorage
+        noteStorage: INoteStorage,
+        noteService: INoteService
     ): INoteRepository =
-        NoteRepository (noteStorage = noteStorage)
+        NoteRepository (noteStorage = noteStorage,noteService = noteService)
 
 
 }
