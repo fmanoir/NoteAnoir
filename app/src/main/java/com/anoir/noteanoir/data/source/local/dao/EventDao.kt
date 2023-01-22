@@ -13,7 +13,7 @@ Note Dao Interface
 @Dao
 interface EventDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addEvents(note: EventEntity)
+    suspend fun addEvents(list: List<EventEntity>)
 
     @Query("select * from EventEntity")
     fun getEvents(): List<EventEntity>

@@ -17,7 +17,7 @@ class EventStorage @Inject constructor(
         return eventDao.getEvents()
     }
 
-    override suspend fun addEvents(note: EventEntity) {
-        eventDao.addEvents(note)
+    override suspend fun addEvents(list: List<EventEntity>) {
+        eventDao.addEvents(list)
     }
 }

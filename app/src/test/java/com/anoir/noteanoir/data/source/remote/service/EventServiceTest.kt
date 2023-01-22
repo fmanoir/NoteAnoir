@@ -1,6 +1,6 @@
 package com.anoir.noteanoir.data.source.remote.service
 
-import com.anoir.noteanoir.data.source.builder.NoteBuilder.Companion.BUILD_NOTE_DTO
+import com.anoir.noteanoir.builder.BuilderEvent.Companion.BUILD_EVENT_DTO
 import com.anoir.noteanoir.data.source.remote.api.EventAPI
 import com.anoir.noteanoir.data.source.remote.common.error.ApiErrorHandler
 import com.anoir.noteanoir.data.source.remote.common.network.InternetStatusInterface
@@ -46,7 +46,7 @@ class EventServiceTest {
     }
 
     @Test
-    fun `when internet not available during getAllNote from note API should return the Failure `() =
+    fun `when internet not available during getEvents from eventAPI should return the Failure `() =
         runBlockingTest {
             every { internetStatusInterface.ping() } returns flow { emit(InternetStatusType.NO_INTERNET) }
             val result = eventService.getEvents().single()
@@ -55,12 +55,13 @@ class EventServiceTest {
         }
 
     @Test
-    fun `when internet available during getAllNote from note API should return the right Resource `() =
+    fun `when internet available during getEvents from eventAPI should return the right Resource `() =
         runBlockingTest {
             every { internetStatusInterface.ping() } returns flow { emit(InternetStatusType.INTERNET) }
-            coEvery {eventAPI.getEvents() } returns Response.success(listOf(BUILD_NOTE_DTO))
-            val result =eventService.getEvents().single()
-            assertEquals(Resource.OnSuccess(listOf(BUILD_NOTE_DTO)), result)
+            coEvery { eventAPI.getEvents() } returns Response.success(listOf(BUILD_EVENT_DTO))
+            val result = eventService.getEvents().single()
+            coVerify(exactly = 1) { eventAPI.getEvents() }
+            assertEquals(Resource.OnSuccess(listOf(BUILD_EVENT_DTO)), result)
         }
 
 }

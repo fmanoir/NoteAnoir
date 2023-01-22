@@ -2,8 +2,8 @@ package com.anoir.noteanoir.data.source.local.storage
 
 import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry
+import com.anoir.noteanoir.builder.BuilderEvent
 import com.anoir.noteanoir.data.repositories.note.IEventStorage
-import com.anoir.noteanoir.data.source.builder.NoteBuilder
 import com.anoir.noteanoir.data.source.local.dao.EventDao
 import com.anoir.noteanoir.data.source.local.database.EventDatabase
 import com.anoir.noteanoir.domain.model.EventModel
@@ -28,9 +28,9 @@ class EventStorageTest {
     @MockK
     private lateinit var noteStorage: IEventStorage
 
-    lateinit var database: EventDatabase
+    private lateinit var database: EventDatabase
 
-    lateinit var eventDao: EventDao
+    private lateinit var eventDao: EventDao
 
     @Before
     fun setUp() {
@@ -45,18 +45,17 @@ class EventStorageTest {
     }
 
     @Test
-    fun shouldReturnsAllNote_WhenExist() {
+    fun shouldReturnEvents_WhenExist() {
         runBlocking {
-            noteStorage.addEvents(NoteBuilder.BUILD_NOTE_ENTITY)
+            noteStorage.addEvents(listOf(BuilderEvent.BUILD_EVENT_ENTITY))
             val result = noteStorage.getEvents()
             assertEquals(1, result.size)
-            assertEquals(NoteBuilder.PARAMETER_NOTE_ID, result[0].id)
-            assertEquals(NoteBuilder.PARAMETER_NOTE_TITLE, result[0].title)
+            assertEquals(BuilderEvent.BUILD_EVENT_ENTITY, result[0])
         }
     }
 
     @Test
-    fun shouldReturnEmptyList_WhenNoNote() {
+    fun shouldReturnEmptyList_WhenNoData() {
         runBlocking {
             assertEquals(emptyList<EventModel>(), noteStorage.getEvents())
         }
