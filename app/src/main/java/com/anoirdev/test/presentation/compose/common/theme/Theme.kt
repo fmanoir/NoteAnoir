@@ -1,4 +1,4 @@
-package com.anoirdev.test.presentation.common.theme
+package com.anoirdev.test.presentation.compose.common.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

@@ -9,5 +9,5 @@ Event Service interface
  */
 
 interface IEventService {
-    suspend fun getEvents(): Flow<Resource<List<EventsDto>>>
+    suspend fun getEvents(): Flow<Resource<EventsDto>>
 }

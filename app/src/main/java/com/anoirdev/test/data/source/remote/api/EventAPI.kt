@@ -10,7 +10,7 @@ All Event API
 
 interface EventAPI {
     @GET(GET_EVENTS)
-    suspend fun getEvents(): Response<List<EventsDto>>
+    suspend fun getEvents(): Response<EventsDto>
 
     companion object {
         const val GET_EVENTS = "events"

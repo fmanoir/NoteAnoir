@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="sport_easy">#FF030E2F</color>
+    <color name="background">#FFF7F7F7</color>
+    <color name="gris">#FF9C929A</color>
+    <color name="gris_d_39">#FF393939</color>
+    <color name="grean">#FF4BCB1F</color>
+    <color name="red">#FFFE3824</color>
 </resources>

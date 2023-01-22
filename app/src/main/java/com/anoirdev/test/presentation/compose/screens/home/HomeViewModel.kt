@@ -1,4 +1,4 @@
-package com.anoirdev.test.presentation.screens.home
+package com.anoirdev.test.presentation.compose.screens.home
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

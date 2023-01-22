@@ -1,4 +1,4 @@
-package com.anoirdev.test.presentation
+package com.anoirdev.test.presentation.di
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,8 +10,8 @@ import androidx.compose.material.Surface
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.anoirdev.test.presentation.common.navigation.NavGraph
-import com.anoirdev.test.presentation.common.theme.TestTheme
+import com.anoirdev.test.presentation.compose.common.navigation.NavGraph
+import com.anoirdev.test.presentation.compose.common.theme.TestTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @ExperimentalComposeUiApi

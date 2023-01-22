@@ -1,4 +1,4 @@
-package com.anoirdev.test.presentation.common.components
+package com.anoirdev.test.presentation.compose.common.components
 
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar

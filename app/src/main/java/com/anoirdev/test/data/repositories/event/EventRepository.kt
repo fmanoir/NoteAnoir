@@ -1,7 +1,6 @@
 package com.anoirdev.test.data.repositories.event
 
 import com.anoirdev.test.data.common.IFetchingStrategy
-import com.anoirdev.test.data.source.mappers.toEntity
 import com.anoirdev.test.data.source.mappers.toModel
 import com.anoirdev.test.domain.model.EventModel
 import com.anoirdev.test.domain.repository.IEventRepository
@@ -26,7 +25,7 @@ class EventRepository @Inject constructor(
             fetchFromRemote = {
                 eventService.getEvents()
             },
-            saveRemoteData = { listFromRemote -> listFromRemote.map { listEvents -> eventStorage.addEvents(listEvents.events.map { it.toEntity() }) } },
+            saveRemoteData = eventStorage::addEvents,
             fetchFromLocal = { flowOf(eventStorage.getEvents().map { it.toModel() }) }
         )
     }

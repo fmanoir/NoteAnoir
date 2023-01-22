@@ -17,13 +17,11 @@ interface IFlowNetworkRequest {
         networkApiCall: NetworkAPIInvoke<T>,
     ): Flow<Resource<T>> {
         return flow {
-
             val internetStatus = internetStatusInterface.ping().single()
             if (internetStatus == InternetStatusType.NO_INTERNET) {
                 emit(Resource.OnFailed(Failure.Connection.Unavailable))
                 return@flow
             }
-
             val response = networkApiCall()
             if (response.isSuccessful) {
                 response.body()?.let {

@@ -1,4 +1,4 @@
-package com.anoirdev.test.presentation.screens.home.components
+package com.anoirdev.test.presentation.compose.screens.home.components
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer

@@ -11,12 +11,25 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="@color/background"
         android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/sport_easy"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/events_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/background"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 

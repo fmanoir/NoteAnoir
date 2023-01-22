@@ -22,7 +22,7 @@ class EventService @Inject constructor(
 ) : IEventService, IFlowNetworkRequest {
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    override suspend fun getEvents(): Flow<Resource<List<EventsDto>>> {
+    override suspend fun getEvents(): Flow<Resource<EventsDto>> {
         return safeCall(
             internetStatusInterface = internetStatusInterface,
             apiErrorHandler = apiErrorHandler

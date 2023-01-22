@@ -1,11 +1,12 @@
 package com.anoirdev.test.presentation.xml
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.anoirdev.test.R
 import com.anoirdev.test.databinding.ActivityXmlBinding
+import com.anoirdev.test.presentation.base.BaseActivity
 import com.anoirdev.test.presentation.xml.adapter.EventAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -15,7 +16,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 @ExperimentalCoroutinesApi
 @OptIn(InternalCoroutinesApi::class)
-class XMLActivity : AppCompatActivity() {
+class XMLActivity : BaseActivity() {
 
     @Inject
     lateinit var eventAdapter: EventAdapter
@@ -28,6 +29,7 @@ class XMLActivity : AppCompatActivity() {
             this,
             R.layout.activity_xml
         )
+        setSupportActionBar(binding.toolbar)
         registerBindingAndBaseObservers(binding)
         registerRecyclerView(binding)
         registerObservers()
@@ -44,7 +46,9 @@ class XMLActivity : AppCompatActivity() {
     }
 
     private fun registerObservers() {
+        registerBaseObservers(viewModel)
         viewModel.observableDataEvent.observe(this) {
+            Log.e("Anir", it.listOfData.toString())
             eventAdapter.setItems(it.listOfData)
         }
     }

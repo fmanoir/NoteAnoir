@@ -4,13 +4,14 @@ import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
+import com.anoirdev.test.R
 import com.anoirdev.test.domain.model.EventModel
 import com.anoirdev.test.domain.usecase.EventUseCase
 import com.anoirdev.test.presentation.base.BaseViewModel
+import com.anoirdev.test.utlis.dispatcher.IDispatcherProvider
 import com.anoirdev.test.utlis.resource.IResourceProvider
 import com.anoirdev.test.utlis.sealed.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import fr.grdf.app.android.olm.core.utils.IDispatcherProvider
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.InternalCoroutinesApi
 import javax.inject.Inject
@@ -22,7 +23,7 @@ class XMLViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     val getEvents: EventUseCase.IGetEvents,
     private val dispatcherProvider: IDispatcherProvider,
-    resourceProvider: IResourceProvider,
+    private val resourceProvider: IResourceProvider,
 ) : BaseViewModel(savedStateHandle, resourceProvider) {
 
 
@@ -37,6 +38,7 @@ class XMLViewModel @Inject constructor(
                 when (it) {
                     is ViewState.Loading -> it.isLoading
                     is ViewState.RenderFailure -> {
+                        shownSnackBarMessage(resourceProvider.getString(R.string.try_later))
                     }
                     is ViewState.RenderSuccess<List<EventModel>> -> renderBindDataSuccess(it.output)
                 }

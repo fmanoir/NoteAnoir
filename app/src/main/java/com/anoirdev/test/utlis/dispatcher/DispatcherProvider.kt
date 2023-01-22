@@ -1,6 +1,5 @@
 package com.anoirdev.test.utlis.dispatcher
 
-import fr.grdf.app.android.olm.core.utils.IDispatcherProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 

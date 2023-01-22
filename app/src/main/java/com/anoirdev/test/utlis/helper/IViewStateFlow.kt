@@ -1,8 +1,8 @@
-package com.anoirdev.test.utlis
+package com.anoirdev.test.utlis.helper
 
+import com.anoirdev.test.utlis.dispatcher.IDispatcherProvider
 import com.anoirdev.test.utlis.sealed.Resource
 import com.anoirdev.test.utlis.sealed.ViewState
-import fr.grdf.app.android.olm.core.utils.IDispatcherProvider
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.*
@@ -38,7 +38,7 @@ interface IViewStateFlow {
             // le flowOn pour s'assurer que tous les appels aux useCases soit exécuté sur le thread IO
         }.flowOn(dispatcher.io)
             .onStart { emit(ViewState.Loading(true)) }
-            .catch { exception ->
+            .catch {
                 emit(ViewState.Loading(false))
             }
     }

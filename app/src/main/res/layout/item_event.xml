@@ -9,19 +9,108 @@
             type="com.anoirdev.test.presentation.xml.EventPresentation" />
     </data>
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_global_8dp"
+        android:layout_marginTop="@dimen/margin_global_10dp"
+        android:layout_marginEnd="@dimen/margin_global_8dp"
+        android:layout_marginBottom="@dimen/margin_global_10dp"
+        android:padding="@dimen/padding_global_5dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/label_left_team_name"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{event.leftTeamName}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:background="@color/white">
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/label_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_global_5dp"
+                android:padding="@dimen/padding_global_5dp"
+                android:text="@{event.date}"
+                android:textColor="@color/gris"
+                android:textSize="@dimen/font_16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/label_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_global_5dp"
+                android:padding="@dimen/padding_global_5dp"
+                android:text="@{event.time}"
+                android:textColor="@color/gris"
+                android:textSize="@dimen/font_16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/line_hr"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/background"
+                android:padding="@dimen/padding_global_5dp"
+                app:layout_constraintTop_toBottomOf="@+id/label_date" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/label_left_team_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_global_5dp"
+                android:text="@{event.leftTeamName}"
+                android:textColor="@color/gris_d_39"
+                android:textSize="@dimen/font_16sp"
+                app:layout_constraintEnd_toStartOf="@+id/label_left_team_score"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line_hr" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/label_left_team_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_global_5dp"
+                android:text="@{event.leftTeamScore}"
+                android:textColor="@color/grean"
+                android:textSize="@dimen/font_16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line_hr" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/label_right_team_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_global_5dp"
+                android:layout_marginBottom="@dimen/margin_global_5dp"
+                android:padding="@dimen/padding_global_5dp"
+                android:text="@{event.rightTeamName}"
+                android:textColor="@color/gris_d_39"
+                android:textSize="@dimen/font_16sp"
+                app:layout_constraintEnd_toStartOf="@+id/label_right_team_score"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/label_left_team_name" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/label_right_team_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_global_5dp"
+                android:padding="@dimen/padding_global_5dp"
+                android:text="@{event.rightTeamScore}"
+                android:textColor="@color/grean"
+                android:textSize="@dimen/font_16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/label_left_team_name" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 </layout>

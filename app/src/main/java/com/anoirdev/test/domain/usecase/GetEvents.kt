@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 /*
-US to get all note
+US to get all events
  */
 
 class GetEvents @Inject constructor(private val eventRepository: IEventRepository) :

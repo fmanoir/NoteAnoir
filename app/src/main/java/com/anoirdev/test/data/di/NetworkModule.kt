@@ -48,7 +48,7 @@ class NetworkModule {
         gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
         val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.HEADERS
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
         val okHttpClient = OkHttpClient.Builder()
             .addInterceptor(interceptor).build()
         return Retrofit.Builder()

@@ -5,9 +5,9 @@ import com.anoirdev.test.domain.model.EventModel
 
 data class EventPresentation(
     val leftTeamName: String,
-    val leftTeamScore: Int,
+    val leftTeamScore: String,
     val rightTeamName: String,
-    val rightTeamScore: Int,
+    val rightTeamScore: String,
     val date: String,
     val time: String
 )
@@ -16,9 +16,9 @@ data class EventPresentation(
 fun EventModel.toPresentation() =
     EventPresentation(
         leftTeamName = this.leftTeamName,
-        leftTeamScore = this.leftTeamScore,
+        leftTeamScore = this.leftTeamScore.toString(),
         rightTeamName = this.rightTeamName,
-        rightTeamScore = this.rightTeamScore,
+        rightTeamScore = this.rightTeamScore.toString(),
         date = this.date,
         time = this.time
     )

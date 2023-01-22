@@ -1,4 +1,4 @@
-package com.anoirdev.test.presentation.common.navigation
+package com.anoirdev.test.presentation.compose.common.navigation
 
 import com.anoirdev.test.utlis.HOME_SCREEN
 
