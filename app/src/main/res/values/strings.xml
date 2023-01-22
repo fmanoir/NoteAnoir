@@ -1,14 +1,9 @@
 <resources>
-    <string name="app_name">NoteAnoir</string>
-
+    <string name="app_name">Test SportEasy</string>
 
     <string name="home_title">Home</string>
     <string name="home_button_add_task">Add</string>
     <string name="home_button_show_note">My Notes</string>
     <string name="home_button_show_state">Statistique</string>
-
     <string name="home_body_review">Bonjour, Ceci est un exmple d\'une note ....</string>
-
-    <string name="dialog_yes">Oui</string>
-    <string name="dialog_no">Non</string>
 </resources>
