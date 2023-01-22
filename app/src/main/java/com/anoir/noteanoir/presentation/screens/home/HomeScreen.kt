@@ -8,6 +8,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.anoir.noteanoir.R
+import com.anoir.noteanoir.presentation.common.components.CustomAlertDialog
 import com.anoir.noteanoir.presentation.screens.home.components.HomeBody
 import com.anoir.noteanoir.presentation.common.components.TopBar
 import com.anoir.noteanoir.presentation.common.navigation.Screen
@@ -18,7 +19,17 @@ fun HomeScreen(navHostController: NavHostController, viewModel: HomeViewModel = 
     Scaffold(
         topBar = {
             TopBar(stringResource(id = R.string.home_title))
-        }, content = { HomeBody() },
+        }, content = {
+            HomeBody()
+            CustomAlertDialog(
+                title = stringResource(id = R.string.home_title),
+                textDescription = stringResource(id = R.string.home_body_review),
+                onConfirmClick = {
+                },
+                onDismissClick = {
+                }
+            )
+        },
         floatingActionButton = {
             FloatingActionButton(
                 onClick = { navHostController.navigate(Screen.NoteAddScreen.route) },
