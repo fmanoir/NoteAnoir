@@ -1,10 +1,10 @@
 package com.anoir.noteanoir.data.source.remote.service
 
-import com.anoir.noteanoir.data.repositories.note.INoteService
-import com.anoir.noteanoir.data.source.remote.api.NoteAPI
+import com.anoir.noteanoir.data.repositories.note.IEventService
+import com.anoir.noteanoir.data.source.remote.api.EventAPI
 import com.anoir.noteanoir.data.source.remote.common.error.IApiErrorHandler
 import com.anoir.noteanoir.data.source.remote.common.network.InternetStatusInterface
-import com.anoir.noteanoir.data.source.remote.dto.NoteDto
+import com.anoir.noteanoir.data.source.remote.dto.event.EventsDto
 import com.anoir.noteanoir.utlis.sealed.Resource
 import com.anoir.noteanoir.data.source.remote.common.network.IFlowNetworkRequest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -15,19 +15,19 @@ import javax.inject.Inject
 Service entre API and Repository
  */
 
-class NoteService @Inject constructor(
-    private val noteAPI: NoteAPI,
+class EventService @Inject constructor(
+    private val eventAPI: EventAPI,
     private val apiErrorHandler: IApiErrorHandler,
     private val internetStatusInterface: InternetStatusInterface
-) : INoteService, IFlowNetworkRequest {
+) : IEventService, IFlowNetworkRequest {
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    override suspend fun getAllNote(): Flow<Resource<List<NoteDto>>> {
+    override suspend fun getEvents(): Flow<Resource<List<EventsDto>>> {
         return safeCall(
             internetStatusInterface = internetStatusInterface,
             apiErrorHandler = apiErrorHandler
         ) {
-            noteAPI.getAllNote()
+            eventAPI.getEvents()
         }
     }
 

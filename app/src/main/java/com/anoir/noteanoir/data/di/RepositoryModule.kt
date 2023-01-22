@@ -1,9 +1,9 @@
 package com.anoir.noteanoir.data.di
 
-import com.anoir.noteanoir.data.repositories.note.INoteService
-import com.anoir.noteanoir.data.repositories.note.INoteStorage
-import com.anoir.noteanoir.data.repositories.note.NoteRepository
-import com.anoir.noteanoir.domain.repository.INoteRepository
+import com.anoir.noteanoir.data.repositories.note.IEventService
+import com.anoir.noteanoir.data.repositories.note.IEventStorage
+import com.anoir.noteanoir.data.repositories.note.EventRepository
+import com.anoir.noteanoir.domain.repository.IEventRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,10 +23,10 @@ class RepositoryModule {
     @Provides
     @Singleton
     fun provideNoteRepository (
-        noteStorage: INoteStorage,
-        noteService: INoteService
-    ): INoteRepository =
-        NoteRepository (noteStorage = noteStorage,noteService = noteService)
+        eventStorage: IEventStorage,
+        eventService: IEventService
+    ): IEventRepository =
+        EventRepository (eventStorage = eventStorage,eventService = eventService)
 
 
 }

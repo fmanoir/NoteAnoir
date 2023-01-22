@@ -1,7 +1,7 @@
 package com.anoir.noteanoir.data.source.remote.service
 
 import com.anoir.noteanoir.data.source.builder.NoteBuilder.Companion.BUILD_NOTE_DTO
-import com.anoir.noteanoir.data.source.remote.api.NoteAPI
+import com.anoir.noteanoir.data.source.remote.api.EventAPI
 import com.anoir.noteanoir.data.source.remote.common.error.ApiErrorHandler
 import com.anoir.noteanoir.data.source.remote.common.network.InternetStatusInterface
 import com.anoir.noteanoir.data.source.remote.common.network.InternetStatusType
@@ -23,23 +23,23 @@ import retrofit2.Response
 
 
 @ExperimentalCoroutinesApi
-class NoteServiceTest {
+class EventServiceTest {
 
     @MockK
-    lateinit var noteAPI: NoteAPI
+    lateinit var eventAPI: EventAPI
 
     @MockK
     lateinit var internetStatusInterface: InternetStatusInterface
 
 
-    private lateinit var noteService: NoteService
+    private lateinit var eventService: EventService
 
 
     @Before
     fun setUp() {
         MockKAnnotations.init(this)
-        noteService = NoteService(
-            noteAPI = noteAPI,
+        eventService = EventService(
+            eventAPI = eventAPI,
             apiErrorHandler = ApiErrorHandler(),
             internetStatusInterface = internetStatusInterface
         )
@@ -49,8 +49,8 @@ class NoteServiceTest {
     fun `when internet not available during getAllNote from note API should return the Failure `() =
         runBlockingTest {
             every { internetStatusInterface.ping() } returns flow { emit(InternetStatusType.NO_INTERNET) }
-            val result = noteService.getAllNote().single()
-            coVerify(exactly = 0) { noteAPI.getAllNote() }
+            val result = eventService.getEvents().single()
+            coVerify(exactly = 0) { eventAPI.getEvents() }
             assertEquals(Resource.OnFailed(ErrorFailure.Connection.Unavailable), result)
         }
 
@@ -58,8 +58,8 @@ class NoteServiceTest {
     fun `when internet available during getAllNote from note API should return the right Resource `() =
         runBlockingTest {
             every { internetStatusInterface.ping() } returns flow { emit(InternetStatusType.INTERNET) }
-            coEvery {noteAPI.getAllNote() } returns Response.success(listOf(BUILD_NOTE_DTO))
-            val result =noteService.getAllNote().single()
+            coEvery {eventAPI.getEvents() } returns Response.success(listOf(BUILD_NOTE_DTO))
+            val result =eventService.getEvents().single()
             assertEquals(Resource.OnSuccess(listOf(BUILD_NOTE_DTO)), result)
         }
 

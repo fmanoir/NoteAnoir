@@ -4,17 +4,17 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.anoir.noteanoir.data.source.local.entity.NoteEntity
+import com.anoir.noteanoir.data.source.local.entity.EventEntity
 
 /*
 Note Dao Interface
  */
 
 @Dao
-interface NoteDao {
+interface EventDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addNote(note: NoteEntity)
+    suspend fun addEvents(note: EventEntity)
 
-    @Query("select * from NoteEntity")
-    fun getAllNote(): List<NoteEntity>
+    @Query("select * from EventEntity")
+    fun getEvents(): List<EventEntity>
 }

@@ -4,10 +4,10 @@ import android.app.Application
 import androidx.room.Room
 import com.anoir.noteanoir.BuildConfig
 import com.anoir.noteanoir.data.common.DATABASE_NAME
-import com.anoir.noteanoir.data.repositories.note.INoteStorage
-import com.anoir.noteanoir.data.source.local.dao.NoteDao
-import com.anoir.noteanoir.data.source.local.database.NoteDatabase
-import com.anoir.noteanoir.data.source.local.storage.NoteStorage
+import com.anoir.noteanoir.data.repositories.note.IEventStorage
+import com.anoir.noteanoir.data.source.local.dao.EventDao
+import com.anoir.noteanoir.data.source.local.database.EventDatabase
+import com.anoir.noteanoir.data.source.local.storage.EventStorage
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,8 +25,8 @@ class DatabaseModule {
     // DataBase
     @Provides
     @Singleton
-    fun providesDatabase(app: Application): NoteDatabase =
-        Room.databaseBuilder(app, NoteDatabase::class.java, DATABASE_NAME)
+    fun providesDatabase(app: Application): EventDatabase =
+        Room.databaseBuilder(app, EventDatabase::class.java, DATABASE_NAME)
             .apply {
                 if (BuildConfig.DEBUG) fallbackToDestructiveMigration()
             }.build()
@@ -35,14 +35,14 @@ class DatabaseModule {
     @Provides
     @Singleton
     fun providesNoteStorage(
-        noteDao: NoteDao
-    ): INoteStorage =
-        NoteStorage(noteDao = noteDao)
+        eventDao: EventDao
+    ): IEventStorage =
+        EventStorage(eventDao = eventDao)
 
     // Dao
     @Provides
     @Singleton
-    fun providesNoteDao(database: NoteDatabase): NoteDao {
-        return database.noteDao
+    fun providesNoteDao(database: EventDatabase): EventDao {
+        return database.eventDao
     }
 }

@@ -2,11 +2,11 @@ package com.anoir.noteanoir.data.source.local.storage
 
 import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry
-import com.anoir.noteanoir.data.repositories.note.INoteStorage
+import com.anoir.noteanoir.data.repositories.note.IEventStorage
 import com.anoir.noteanoir.data.source.builder.NoteBuilder
-import com.anoir.noteanoir.data.source.local.dao.NoteDao
-import com.anoir.noteanoir.data.source.local.database.NoteDatabase
-import com.anoir.noteanoir.domain.model.NoteModel
+import com.anoir.noteanoir.data.source.local.dao.EventDao
+import com.anoir.noteanoir.data.source.local.database.EventDatabase
+import com.anoir.noteanoir.domain.model.EventModel
 import dagger.hilt.android.testing.HiltAndroidTest
 import io.mockk.MockKAnnotations
 import io.mockk.impl.annotations.MockK
@@ -23,32 +23,32 @@ import java.io.IOException
 @ExperimentalCoroutinesApi
 @RunWith(RobolectricTestRunner::class)
 @HiltAndroidTest
-class NoteStorageTest {
+class EventStorageTest {
 
     @MockK
-    private lateinit var noteStorage: INoteStorage
+    private lateinit var noteStorage: IEventStorage
 
-    lateinit var database: NoteDatabase
+    lateinit var database: EventDatabase
 
-    lateinit var noteDao: NoteDao
+    lateinit var eventDao: EventDao
 
     @Before
     fun setUp() {
         val context = InstrumentationRegistry.getInstrumentation().context
-        database = Room.inMemoryDatabaseBuilder(context, NoteDatabase::class.java)
+        database = Room.inMemoryDatabaseBuilder(context, EventDatabase::class.java)
             .allowMainThreadQueries().build()
-        noteDao = database.noteDao
+        eventDao = database.eventDao
         MockKAnnotations.init(this)
-        noteStorage = NoteStorage(
-            noteDao = noteDao,
+        noteStorage = EventStorage(
+            eventDao = eventDao,
         )
     }
 
     @Test
     fun shouldReturnsAllNote_WhenExist() {
         runBlocking {
-            noteStorage.addNote(NoteBuilder.BUILD_NOTE_ENTITY)
-            val result = noteStorage.getAllNote()
+            noteStorage.addEvents(NoteBuilder.BUILD_NOTE_ENTITY)
+            val result = noteStorage.getEvents()
             assertEquals(1, result.size)
             assertEquals(NoteBuilder.PARAMETER_NOTE_ID, result[0].id)
             assertEquals(NoteBuilder.PARAMETER_NOTE_TITLE, result[0].title)
@@ -58,7 +58,7 @@ class NoteStorageTest {
     @Test
     fun shouldReturnEmptyList_WhenNoNote() {
         runBlocking {
-            assertEquals(emptyList<NoteModel>(), noteStorage.getAllNote())
+            assertEquals(emptyList<EventModel>(), noteStorage.getEvents())
         }
     }
 

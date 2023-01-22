@@ -3,15 +3,16 @@ package com.anoir.noteanoir.data.di
 import com.anoir.noteanoir.data.common.BASE_URL
 import com.anoir.noteanoir.data.common.DNS_TIMEOUT
 import com.anoir.noteanoir.data.common.HOSTNAME
-import com.anoir.noteanoir.data.repositories.note.INoteService
-import com.anoir.noteanoir.data.source.remote.api.NoteAPI
+import com.anoir.noteanoir.data.common.PORT
+import com.anoir.noteanoir.data.repositories.note.IEventService
+import com.anoir.noteanoir.data.source.remote.api.EventAPI
 import com.anoir.noteanoir.data.source.remote.common.error.ApiErrorHandler
 import com.anoir.noteanoir.data.source.remote.common.error.IApiErrorHandler
 import com.anoir.noteanoir.data.source.remote.common.network.InternetStatus
 import com.anoir.noteanoir.data.source.remote.common.network.InternetStatusInterface
 import com.anoir.noteanoir.data.source.remote.common.socket.ISocket
 import com.anoir.noteanoir.data.source.remote.common.socket.SocketHandler
-import com.anoir.noteanoir.data.source.remote.service.NoteService
+import com.anoir.noteanoir.data.source.remote.service.EventService
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -60,8 +61,8 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideNoteAPI(retrofit: Retrofit): NoteAPI {
-        return retrofit.create(NoteAPI::class.java)
+    fun provideNoteAPI(retrofit: Retrofit): EventAPI {
+        return retrofit.create(EventAPI::class.java)
     }
 
     @Singleton
@@ -80,7 +81,7 @@ class NetworkModule {
     ): InternetStatusInterface =
         InternetStatus(
             socketFactory = SocketFactory.getDefault(),
-            socketAddress = InetSocketAddress(HOSTNAME, 53),
+            socketAddress = InetSocketAddress(HOSTNAME, PORT),
             timeOut = DNS_TIMEOUT,
             socket = socket
         )
@@ -90,12 +91,12 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideNoteService(
-        noteAPI: NoteAPI,
+        eventAPI: EventAPI,
         genericApiErrorHandler: IApiErrorHandler,
         internetStatusInterface: InternetStatusInterface
-    ): INoteService {
-        return NoteService(
-            noteAPI,
+    ): IEventService {
+        return EventService(
+            eventAPI,
             genericApiErrorHandler,
             internetStatusInterface
         )
