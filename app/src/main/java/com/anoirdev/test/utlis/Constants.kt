@@ -17,8 +17,3 @@ Socket
 const val DNS_TIMEOUT = 3000
 const val PORT = 53
 const val HOSTNAME = "8.8.8.8"
-
-/*
-Screens
- */
-const val HOME_SCREEN = "Home"

@@ -6,7 +6,6 @@ import com.anoirdev.test.data.source.local.entity.EventEntity
 /*
 Event Dao Interface
  */
-
 @Dao
 interface EventDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)

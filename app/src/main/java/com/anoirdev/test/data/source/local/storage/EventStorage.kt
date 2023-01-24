@@ -7,11 +7,9 @@ import com.anoirdev.test.data.source.mappers.toEntity
 import com.anoirdev.test.data.source.remote.dto.event.EventsDto
 import javax.inject.Inject
 
-
 /*
 Event Storage = DAO
  */
-
 class EventStorage @Inject constructor(
     private val eventDao: EventDao
 ) : IEventStorage {

@@ -5,7 +5,6 @@ import androidx.room.RoomDatabase
 import com.anoirdev.test.data.source.local.dao.EventDao
 import com.anoirdev.test.data.source.local.entity.EventEntity
 import com.anoirdev.test.utlis.DATABASE_VERSION
-
 /*
 Database of application + DAO instances
  */

@@ -2,7 +2,6 @@ package com.anoirdev.test.data.source.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-
 /*
 Event Entity
  */

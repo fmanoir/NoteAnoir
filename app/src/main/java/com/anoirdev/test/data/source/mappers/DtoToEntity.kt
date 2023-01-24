@@ -3,7 +3,6 @@ package com.anoirdev.test.data.source.mappers
 import com.anoirdev.test.data.source.local.entity.EventEntity
 import com.anoirdev.test.data.source.remote.dto.event.Event
 
-
 fun Event.toEntity(): EventEntity =
     EventEntity(
         id = 0,
