@@ -1,13 +1,12 @@
-package com.anoirdev.test.presentation.xml
+package com.anoirdev.test.presentation.event
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.anoirdev.test.R
 import com.anoirdev.test.databinding.ActivityXmlBinding
 import com.anoirdev.test.presentation.base.BaseActivity
-import com.anoirdev.test.presentation.xml.adapter.EventAdapter
+import com.anoirdev.test.presentation.event.adapter.EventAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -16,12 +15,12 @@ import javax.inject.Inject
 @AndroidEntryPoint
 @ExperimentalCoroutinesApi
 @OptIn(InternalCoroutinesApi::class)
-class XMLActivity : BaseActivity() {
+class EventActivity : BaseActivity() {
 
     @Inject
     lateinit var eventAdapter: EventAdapter
 
-    private val viewModel: XMLViewModel by viewModels()
+    private val viewModel: EventViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +30,8 @@ class XMLActivity : BaseActivity() {
         )
         setSupportActionBar(binding.toolbar)
         registerBindingAndBaseObservers(binding)
-        registerRecyclerView(binding)
         registerObservers()
+        registerRecyclerView(binding)
     }
 
 
@@ -48,7 +47,6 @@ class XMLActivity : BaseActivity() {
     private fun registerObservers() {
         registerBaseObservers(viewModel)
         viewModel.observableDataEvent.observe(this) {
-            Log.e("Anir", it.listOfData.toString())
             eventAdapter.setItems(it.listOfData)
         }
     }

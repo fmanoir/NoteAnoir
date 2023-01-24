@@ -1,6 +1,6 @@
 package com.anoirdev.test.presentation.di
 
-import com.anoirdev.test.presentation.xml.adapter.EventAdapter
+import com.anoirdev.test.presentation.event.adapter.EventAdapter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

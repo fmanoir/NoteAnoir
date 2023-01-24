@@ -3,10 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="androidx.core.content.ContextCompat" />
 
         <variable
             name="event"
-            type="com.anoirdev.test.presentation.xml.EventPresentation" />
+            type="com.anoirdev.test.presentation.event.EventPresentation" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -34,7 +35,7 @@
                 android:padding="@dimen/padding_global_5dp"
                 android:text="@{event.date}"
                 android:textColor="@color/gris"
-                android:textSize="@dimen/font_16sp"
+                android:textSize="@dimen/font_15sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,7 +48,7 @@
                 android:padding="@dimen/padding_global_5dp"
                 android:text="@{event.time}"
                 android:textColor="@color/gris"
-                android:textSize="@dimen/font_16sp"
+                android:textSize="@dimen/font_13sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -66,7 +67,7 @@
                 android:padding="@dimen/padding_global_5dp"
                 android:text="@{event.leftTeamName}"
                 android:textColor="@color/gris_d_39"
-                android:textSize="@dimen/font_16sp"
+                android:textSize="@dimen/font_17sp"
                 app:layout_constraintEnd_toStartOf="@+id/label_left_team_score"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/line_hr" />
@@ -77,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_global_5dp"
                 android:text="@{event.leftTeamScore}"
-                android:textColor="@color/grean"
+                android:textColor="@{ContextCompat.getColor(context, event.colorLeftTeamScore)}"
                 android:textSize="@dimen/font_16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -104,7 +105,7 @@
                 android:layout_marginBottom="@dimen/margin_global_5dp"
                 android:padding="@dimen/padding_global_5dp"
                 android:text="@{event.rightTeamScore}"
-                android:textColor="@color/grean"
+                android:textColor="@{ContextCompat.getColor(context, event.colorRightTeamScore)}"
                 android:textSize="@dimen/font_16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -3,7 +3,7 @@ package com.anoirdev.test.presentation.base
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
-import com.anoirdev.test.presentation.xml.view.CustomSnackBar
+import com.anoirdev.test.presentation.event.view.CustomSnackBar
 
 abstract class BaseActivity : AppCompatActivity() {
 

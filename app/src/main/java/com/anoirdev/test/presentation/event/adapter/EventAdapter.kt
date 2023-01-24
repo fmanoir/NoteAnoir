@@ -1,8 +1,8 @@
-package com.anoirdev.test.presentation.xml.adapter
+package com.anoirdev.test.presentation.event.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.anoirdev.test.presentation.xml.EventPresentation
+import com.anoirdev.test.presentation.event.EventPresentation
 
 class EventAdapter : RecyclerView.Adapter<EventViewHolder>() {
 

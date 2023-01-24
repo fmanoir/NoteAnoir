@@ -3,9 +3,9 @@ package com.anoirdev.test.data.source.remote.service
 import com.anoirdev.test.builder.BuilderEvent.Companion.BUILD_EVENT_DTO
 import com.anoirdev.test.data.source.remote.api.EventAPI
 import com.anoirdev.test.data.source.remote.common.error.ApiErrorHandler
-import com.anoirdev.test.data.source.remote.common.error.ErrorFailure
 import com.anoirdev.test.data.source.remote.common.network.InternetStatusInterface
 import com.anoirdev.test.data.source.remote.common.network.InternetStatusType
+import com.anoirdev.test.utlis.sealed.Failure
 import com.anoirdev.test.utlis.sealed.Resource
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
@@ -51,14 +51,14 @@ class EventServiceTest {
             every { internetStatusInterface.ping() } returns flow { emit(InternetStatusType.NO_INTERNET) }
             val result = eventService.getEvents().single()
             coVerify(exactly = 0) { eventAPI.getEvents() }
-            assertEquals(Resource.OnFailed(ErrorFailure.Connection.Unavailable), result)
+            assertEquals(Resource.OnFailed(Failure.Connection.Unavailable), result)
         }
 
     @Test
     fun `when internet available during getEvents from eventAPI should return the right Resource `() =
         runBlockingTest {
             every { internetStatusInterface.ping() } returns flow { emit(InternetStatusType.INTERNET) }
-            coEvery { eventAPI.getEvents() } returns Response.success(listOf(BUILD_EVENT_DTO))
+            coEvery { eventAPI.getEvents() } returns Response.success(BUILD_EVENT_DTO)
             val result = eventService.getEvents().single()
             coVerify(exactly = 1) { eventAPI.getEvents() }
             assertEquals(Resource.OnSuccess(listOf(BUILD_EVENT_DTO)), result)

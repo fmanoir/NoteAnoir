@@ -1,4 +1,4 @@
-package com.anoirdev.test.presentation.xml.view
+package com.anoirdev.test.presentation.event.view
 
 import android.graphics.Color
 import android.view.LayoutInflater

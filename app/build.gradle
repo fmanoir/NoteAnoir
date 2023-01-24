@@ -129,6 +129,7 @@ dependencies {
     testImplementation "org.robolectric:robolectric:$versions.robolectric_version"
     testImplementation "pl.pragmatists:JUnitParams:$versions.junitparam_version"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.coroutines_test_version"
+    testImplementation "androidx.arch.core:core-testing:$versions.androidx_core_testing_version"
 
     // kaptTest
     kaptTest "com.google.dagger:hilt-android-compiler:$versions.hilt_version"
@@ -138,6 +139,7 @@ dependencies {
     androidTestImplementation "com.google.truth:truth:$versions.truth_version"
     androidTestImplementation "androidx.test.ext:junit:$versions.androidx_junit_version"
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$versions.compose_ui"
+    androidTestImplementation "androidx.arch.core:core-testing:$versions.androidx_core_testing_version"
 
     // debugImplementation
     debugImplementation "androidx.compose.ui:ui-tooling:$versions.compose_ui"

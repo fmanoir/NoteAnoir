@@ -16,7 +16,7 @@
         android:theme="@style/Theme.NoteAnoir"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.xml.XMLActivity"
+            android:name=".presentation.event.EventActivity"
             android:label="@string/home_title"
             android:exported="true">
             <intent-filter>
@@ -24,15 +24,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-        </activity>
-        <activity
-            android:name=".presentation.di.MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.NoteAnoir">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
         </activity>
     </application>
 

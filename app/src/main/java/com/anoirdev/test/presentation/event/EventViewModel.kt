@@ -1,4 +1,4 @@
-package com.anoirdev.test.presentation.xml
+package com.anoirdev.test.presentation.event
 
 import android.view.View
 import androidx.lifecycle.LiveData
@@ -8,6 +8,7 @@ import com.anoirdev.test.R
 import com.anoirdev.test.domain.model.EventModel
 import com.anoirdev.test.domain.usecase.EventUseCase
 import com.anoirdev.test.presentation.base.BaseViewModel
+import com.anoirdev.test.presentation.mappers.toPresentation
 import com.anoirdev.test.utlis.dispatcher.IDispatcherProvider
 import com.anoirdev.test.utlis.resource.IResourceProvider
 import com.anoirdev.test.utlis.sealed.ViewState
@@ -19,7 +20,7 @@ import javax.inject.Inject
 @ExperimentalCoroutinesApi
 @InternalCoroutinesApi
 @HiltViewModel
-class XMLViewModel @Inject constructor(
+class EventViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     val getEvents: EventUseCase.IGetEvents,
     private val dispatcherProvider: IDispatcherProvider,
@@ -31,6 +32,10 @@ class XMLViewModel @Inject constructor(
     val observableDataEvent: LiveData<EventUI> = _observableDataEvent
 
     init {
+        loadData()
+    }
+
+    fun loadData() {
         execute {
             viewStateFlow(dispatcherProvider) {
                 getEvents()
@@ -49,7 +54,7 @@ class XMLViewModel @Inject constructor(
     private fun renderBindDataSuccess(list: List<EventModel>) {
         _observableDataEvent.postValue(
             EventUI(
-                visibilityOfList = View.VISIBLE,
+                visibilityOfIndicator = View.GONE,
                 listOfData = list.map { it.toPresentation() }
             )
         )
@@ -57,6 +62,6 @@ class XMLViewModel @Inject constructor(
 
     data class EventUI(
         val listOfData: List<EventPresentation> = emptyList(),
-        val visibilityOfList: Int = View.GONE,
+        val visibilityOfIndicator: Int = View.VISIBLE,
     )
 }

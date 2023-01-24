@@ -3,6 +3,7 @@ package com.anoirdev.test.data.source.local.storage
 import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry
 import com.anoirdev.test.builder.BuilderEvent
+import com.anoirdev.test.builder.BuilderEvent.Companion.BUILD_EVENT_DTO
 import com.anoirdev.test.data.repositories.event.IEventStorage
 import com.anoirdev.test.data.source.local.dao.EventDao
 import com.anoirdev.test.data.source.local.database.EventDatabase
@@ -47,7 +48,7 @@ class EventStorageTest {
     @Test
     fun shouldReturnEvents_WhenExist() {
         runBlocking {
-            noteStorage.addEvents(listOf(BuilderEvent.BUILD_EVENT_ENTITY))
+            noteStorage.addEvents(BUILD_EVENT_DTO)
             val result = noteStorage.getEvents()
             assertEquals(1, result.size)
             assertEquals(BuilderEvent.BUILD_EVENT_ENTITY, result[0])

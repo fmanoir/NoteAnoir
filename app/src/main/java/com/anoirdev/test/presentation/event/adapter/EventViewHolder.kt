@@ -1,10 +1,10 @@
-package com.anoirdev.test.presentation.xml.adapter
+package com.anoirdev.test.presentation.event.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.anoirdev.test.databinding.ItemEventBinding
-import com.anoirdev.test.presentation.xml.EventPresentation
+import com.anoirdev.test.presentation.event.EventPresentation
 
 class EventViewHolder(
     private val binding: ItemEventBinding,
